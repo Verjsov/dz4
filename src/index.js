@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import {Posts} from "./Posts";
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <header className="App-header">
+          <Posts/>
+      </header>
   </React.StrictMode>,
   document.getElementById('root')
 );

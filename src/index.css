@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.postBlock{
+  margin: 10px;
+  padding: .5rem;
+  border: 1px solid black;
+}
+.postStore{
+  padding: .5rem;
+}
+.form {
+  border: 1px solid black;
+  margin: 10px;
+  padding: .5rem;
+}
+
+.App-header {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}

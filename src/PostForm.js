@@ -1,11 +1,13 @@
-import React,{useState,useEffect} from 'react';
+import React,{useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from "react-hook-form";
-import './My_app.css';
+import {Loading} from "./Loading";
+import {PostList} from "./PostList";
+import axios from "axios";
 
 export function PostForm(props) {
 
-    const { register, handleSubmit, setValue, reset, formState: { errors} } = useForm();
+    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
 
     const submit = (values) => {
         props.handleSubmit(values);
@@ -22,17 +24,16 @@ export function PostForm(props) {
             setValue( 'title', props.editedPost.title);
             setValue('body', props.editedPost.body);
         }
-    }, [props.editedPost]);
-
+    }, [props.editedPost,setValue]);
 
     return (
         <form onSubmit={handleSubmit(submit)} className="form" >
-            <div>{props.editedPost == null? 'Create': 'Edit' }</div>
+            <div>Status Form: {props.editedPost == null? 'Create': 'Edit' }</div>
             <div className="wrap">
                 <div className="lab">Title</div>
                 <div>
 
-                    <input style={{'width':'1000px'}} type="text" {...register("title", { required: "Please, enter title" })} />
+                    <input style={{'width':'50rem'}} type="text" {...register("title", { required: "Введите title" })} />
 
                     {errors.title && (
                         <div style={{color: "red"}}>{errors.title.message}</div>
@@ -44,7 +45,7 @@ export function PostForm(props) {
                 <div className="lab">Text</div>
                 <div>
 
-                    <input style={{'width':'1000px'}} type="text" {...register("body", { required: "Please, enter body text" })}>
+                    <input style={{'width':'50rem'}} type="text" {...register("body", { required: "Введите body" })}>
 
                     </input>
                     {errors.body && (
@@ -52,9 +53,9 @@ export function PostForm(props) {
                     )}
                 </div>
             </div>
-            <button>{props.editedPost == null? 'Submit': 'Save'} </button>
+            <button>{props.editedPost == null? 'Отправить': 'Сохранить'} </button>
             {props.editedPost && (
-                <button onClick={cancel}>Cancel</button>
+                <button onClick={cancel}>Отмена</button>
             )}
 
         </form>
